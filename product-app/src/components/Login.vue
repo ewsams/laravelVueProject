@@ -22,9 +22,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import router from "../router";
-import store from "../store/index";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Login",
@@ -42,13 +40,6 @@ export default {
         email: this.email,
         password: this.password,
       });
-      this.navigateToUserPage();
-    },
-    navigateToUserPage() {
-      if (store.state.user.currentUser !== null) {
-        router.push(
-          { path: `/user/${store.state.user.currentUser["id"]}` });
-      }
     },
   },
 };
