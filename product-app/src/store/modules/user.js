@@ -1,12 +1,14 @@
 import axios from 'axios';
 
 const state = {
-    user: null,
+    currentUser: null,
     token:null,
     loggedIn: false
 };
 
 const getters = {
+    GET_USER: (state) => state.currentUser,
+    GET_USER_TOKEN: (state) => state.token
 };
 
 const actions = {
@@ -20,7 +22,6 @@ const actions = {
     LOGIN: async ({ commit }, email, password) => {
         const response = await axios.post('http://localhost:8000/api/login',
             email, password);
-        console.log(response.data);
         commit('SET_USER', response.data.user);
         commit('SET_TOKEN',response.data.token);
         commit('SET_LOGIN_STATUS',true);
@@ -29,7 +30,7 @@ const actions = {
 
 const mutations = {
    SET_USER: (state, user) => {
-        state.user = user;
+        state.currentUser = user;
     },
     SET_TOKEN:(state,token) => {
         state.token = token;
