@@ -9,11 +9,11 @@ const getters = {
 };
 
 const actions = {
-    REGISTER: async ({ commit }, email, password, name) => {
+    REGISTER: async ({ commit }, name, email, password) => {
         const response = await axios.post('http://localhost:8000/api/register',
-            email, password, name);
-        console.log(response.data);
-        commit('SET_USER', response.data);
+            name, email, password);
+        console.log(response);
+        commit('SET_USER', response);
     },
     LOGIN: async ({ commit }, email, password) => {
         const response = await axios.post('http://localhost:8000/api/login',

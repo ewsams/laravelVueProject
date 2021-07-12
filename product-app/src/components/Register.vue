@@ -30,7 +30,9 @@
         />
       </div>
       <div>
-        <button class="btn success-btn" type="submit">Register</button>
+        <button @submit="createUser" class="btn success-btn" type="submit">
+          Register
+        </button>
       </div>
     </form>
   </div>
@@ -52,7 +54,12 @@ export default {
     ...mapActions(["REGISTER"]),
     createUser(e) {
       e.preventDefault();
-      this.REGISTER(this.email, this.password, this.userName);
+      this.REGISTER({
+        name: this.userName,
+        email: this.email,
+        password: this.password,
+        password_confirmation:this.password
+      });
     },
   },
 };
