@@ -13,18 +13,18 @@ const actions = {
         const response = await axios.post('http://localhost:8000/api/register',
             email, password, name);
         console.log(response.data);
-        commit('setUser', response.data);
+        commit('SET_USER', response.data);
     },
     LOGIN: async ({ commit }, email, password) => {
         const response = await axios.post('http://localhost:8000/api/login',
             email, password);
         console.log(response.data);
-        commit('setUser', response.data);
+        commit('SET_USER', response.data);
     }
 };
 
 const mutations = {
-    setUser: (state, user) => {
+   SET_USER: (state, user) => {
         state.user = user;
     }
 };
