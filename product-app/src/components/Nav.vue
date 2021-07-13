@@ -13,11 +13,17 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters,mapActions } from "vuex";
 
 export default {
   name: "Nav",
   computed: mapGetters({ loggedInStatus: "user/GET_LOGGED_IN_STATUS" }),
+  methods: {
+    ...mapActions({ logOutUser: "user/LOG_OUT" }),
+    logOut() {
+      this.logOutUser();
+    },
+  },
 };
 </script>
 

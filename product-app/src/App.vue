@@ -5,9 +5,6 @@
   </div>
 </template>
 
-<style src="@/style.css">
-</style>
-
 <script>
 import { mapGetters, mapActions } from "vuex";
 import Nav from "@/components/Nav";
@@ -18,12 +15,8 @@ export default {
     Nav,
   },
   computed: mapGetters({ loggedInStatus: "user/GET_LOGGED_IN_STATUS" }),
-  methods: {
-    ...mapActions({ logOutUser: "user/LOG_OUT" }),
-    logOut() {
-      this.logOutUser();
-    },
-  },
 };
 </script>
 
+<style src="@/style.css">
+</style>
