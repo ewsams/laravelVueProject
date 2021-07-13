@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
 import Nav from "@/components/Nav";
 
 export default {
@@ -14,7 +13,6 @@ export default {
   components: {
     Nav,
   },
-  computed: mapGetters({ loggedInStatus: "user/GET_LOGGED_IN_STATUS" }),
 };
 </script>
 

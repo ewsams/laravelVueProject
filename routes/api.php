@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,6 +24,9 @@ function () {
     Route::put('products/{id}',[ProductController::class,'update']);
     Route::delete('products/{id}',[ProductController::class,'destroy']);
     Route::post('/logout',[AuthController::class, 'logout']);
+    Route::get('/user', function(Request $request){
+        return $request->user();
+    });
 });
 
 //Public Routes
