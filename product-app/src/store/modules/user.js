@@ -33,7 +33,7 @@ const actions = {
         router.push({ path: `/user/${state.currentUser.id}` });
     },
     LOG_OUT: async ({ commit }) => {
-        const config = axios.defaults.headers.common = { 'Authorization': `Bearer ${state.token}`};
+        const config = axios.defaults.headers.common = { 'Authorization': `Bearer ${state.token}` };
         const response = await axios.post('/api/logout', null, config);
         commit('SET_USER', null);
         commit('SET_TOKEN', null);
@@ -54,7 +54,7 @@ const mutations = {
 };
 
 export default {
-    namespaced:true,
+    namespaced: true,
     state,
     getters,
     actions,

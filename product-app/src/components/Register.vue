@@ -55,9 +55,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions({ REGISTER: "user/REGISTER" }),
+    ...mapActions({ register: "user/REGISTER" }),
     createUser() {
-      this.REGISTER({
+      this.register({
         name: this.userName,
         email: this.email,
         password: this.password,

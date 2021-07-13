@@ -33,9 +33,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions({ LOGIN: "user/LOGIN" }),
+    ...mapActions({ userLogin: "user/LOGIN" }),
     login() {
-      this.LOGIN({
+      this.userLogin({
         email: this.email,
         password: this.password,
       });
