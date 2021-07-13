@@ -15,13 +15,16 @@ const getters = {
 
 const actions = {
     REGISTER: async ({ commit }, name, email, password) => {
+        await axios.get('/sanctum/csrf-cookie');
         const response = await axios.post('/api/register',
             name, email, password);
         console.log(response);
         commit('SET_USER', response.data.user);
         commit('SET_TOKEN', response.data.token);
+        router.push({ path: '/' });
     },
     LOGIN: async ({ commit }, email, password) => {
+        await axios.get('/sanctum/csrf-cookie');
         const response = await axios.post('/api/login',
             email, password);
         commit('SET_USER', response.data.user);
@@ -30,8 +33,7 @@ const actions = {
         router.push({ path: `/user/${state.currentUser.id}` });
     },
     LOG_OUT: async ({ commit }) => {
-        await axios.get('/sanctum/csrf-cookie');
-        const config = axios.defaults.headers.common = { 'Authorization': `Bearer ${state.token}`, 'Accept': 'application/json' };
+        const config = axios.defaults.headers.common = { 'Authorization': `Bearer ${state.token}`};
         const response = await axios.post('/api/logout', null, config);
         commit('SET_USER', null);
         commit('SET_TOKEN', null);
@@ -52,6 +54,7 @@ const mutations = {
 };
 
 export default {
+    namespaced:true,
     state,
     getters,
     actions,

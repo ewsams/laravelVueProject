@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Please Register...</h3>
-    <form @submit="createUser" class="d-block">
+    <form @submit.prevent="createUser" class="d-block">
       <div class="p-2">
         <input
           type="email"
@@ -30,7 +30,11 @@
         />
       </div>
       <div>
-        <button @submit="createUser" class="btn success-btn" type="submit">
+        <button
+          @submit.prevent="createUser"
+          class="btn success-btn"
+          type="submit"
+        >
           Register
         </button>
       </div>
@@ -51,14 +55,13 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["REGISTER"]),
-    createUser(e) {
-      e.preventDefault();
+    ...mapActions({ REGISTER: "user/REGISTER" }),
+    createUser() {
       this.REGISTER({
         name: this.userName,
         email: this.email,
         password: this.password,
-        password_confirmation:this.password
+        password_confirmation: this.password,
       });
     },
   },

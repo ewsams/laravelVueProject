@@ -1,12 +1,12 @@
 <template>
   <div>
     <!-- Nav Pre Logged In -->
-    <div id="nav" v-if="!GET_LOGGED_IN_STATUS">
+    <div id="nav" v-if="!LOGGED_IN_STATUS">
       <router-link to="/">Home</router-link>
       <router-link to="/register" class="p-2">Register</router-link>
     </div>
-     <!-- Nav Logged In -->
-    <div id="nav" v-if="GET_LOGGED_IN_STATUS">
+    <!-- Nav Logged In -->
+    <div id="nav" v-if="LOGGED_IN_STATUS">
       <router-link to="/" @click.prevent="logOut">Log Out</router-link>
     </div>
     <div>
@@ -19,17 +19,17 @@
 </style>
 
 <script>
-import { mapGetters,mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "App",
-  computed: mapGetters(["GET_LOGGED_IN_STATUS"]),
-  methods:{
-    ...mapActions(["LOG_OUT"]),
-    logOut(){
+  computed: mapGetters({ LOGGED_IN_STATUS: "user/GET_LOGGED_IN_STATUS" }),
+  methods: {
+    ...mapActions({ LOG_OUT: "user/LOG_OUT" }),
+    logOut() {
       this.LOG_OUT();
-    }
-  }
+    },
+  },
 };
 </script>
 

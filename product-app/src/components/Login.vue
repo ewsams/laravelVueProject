@@ -1,7 +1,7 @@
 <template>
   <div class="p-3">
     <h3>Returning? Log In...</h3>
-    <form @submit="login">
+    <form @submit.prevent="login">
       <input
         class="m-2"
         size="30"
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "Login",
@@ -33,9 +33,8 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["LOGIN"]),
-    login(e) {
-      e.preventDefault();
+    ...mapActions({ LOGIN: "user/LOGIN" }),
+    login() {
       this.LOGIN({
         email: this.email,
         password: this.password,
